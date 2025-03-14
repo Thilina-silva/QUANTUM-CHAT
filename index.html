@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUANTUM CHAT - Enter the Quantum Realm</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>QUANTUM CHAT</h1>
+            <p class="subtitle">Where quantum consciousness meets digital reality</p>
+            <div class="controls">
+                <div class="quantum-mode-toggle">
+                    <label class="switch">
+                        <input type="checkbox" id="quantumMode">
+                        <span class="slider"></span>
+                        <span class="toggle-label">Quantum Mode</span>
+                    </label>
+                </div>
+                <div class="theme-selector">
+                    <select id="quantumTheme">
+                        <option value="entanglement">Entanglement</option>
+                        <option value="superposition">Superposition</option>
+                        <option value="tunneling">Quantum Tunneling</option>
+                        <option value="wave">Wave Function</option>
+                    </select>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search quantum messages..." class="quantum-search">
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+            </div>
+        </header>
+        <div class="chat-container">
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input-container">
+                <textarea id="userInput" placeholder="Type your message here..." rows="1"></textarea>
+                <div class="input-actions">
+                    <button id="voiceButton" class="voice-button" title="Toggle voice input">
+                        <i class="voice-icon">🎤</i>
+                    </button>
+                    <button id="sendButton">Send</button>
+                </div>
+            </div>
+        </div>
+        <div class="reaction-menu" id="reactionMenu">
+            <button class="reaction-btn" data-reaction="superposition">⚛</button>
+            <button class="reaction-btn" data-reaction="entangled">🔗</button>
+            <button class="reaction-btn" data-reaction="collapsed">📊</button>
+            <button class="reaction-btn" data-reaction="wave">🌊</button>
+        </div>
+    </div>
+    <canvas id="quantumCanvas"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="script.js"></script>
+</body>
+</html> 
