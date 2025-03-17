@@ -17,8 +17,22 @@ let chatHistory = [];
 let particles = [];
 let animationFrameId;
 
-// Defer non-critical initializations
+// Wait for the intro animation to complete
 document.addEventListener('DOMContentLoaded', () => {
+    const intro = document.getElementById('intro');
+    const mainContent = document.getElementById('mainContent');
+
+    // After intro animation completes
+    setTimeout(() => {
+        intro.style.display = 'none';
+        mainContent.classList.remove('hidden');
+    }, 3500);
+
+    // Initialize the rest of the app
+    initializeApp();
+});
+
+function initializeApp() {
     // Theme handling
     const savedTheme = localStorage.getItem('quantumTheme') || 'entanglement';
     themeSelector.value = savedTheme;
@@ -33,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Start ping service
     startPingService();
-});
+}
 
 // Event Listeners
 themeSelector.addEventListener('change', (e) => {

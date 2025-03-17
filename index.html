@@ -13,10 +13,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div id="intro" class="intro-container">
+        <h1 class="intro-title">QUANTUM CHAT</h1>
+        <p class="intro-subtitle">Where quantum consciousness meets digital reality</p>
+    </div>
+    <div id="mainContent" class="container hidden">
         <header>
-            <h1>QUANTUM CHAT</h1>
-            <p class="subtitle">Where quantum consciousness meets digital reality</p>
             <div class="controls">
                 <div class="quantum-mode-toggle">
                     <label class="switch">
@@ -33,10 +35,6 @@
                         <option value="wave">Wave Function</option>
                     </select>
                 </div>
-                <div class="search-container">
-                    <input type="text" id="searchInput" placeholder="Search quantum messages..." class="quantum-search">
-                    <div id="searchResults" class="search-results"></div>
-                </div>
             </div>
         </header>
         <main class="chat-container">
@@ -44,7 +42,7 @@
         </main>
         <footer class="chat-input-container">
             <div class="input-wrapper">
-                <textarea id="userInput" placeholder="Type your message here..." rows="1"></textarea>
+                <textarea id="userInput" placeholder="Send a message..." rows="1"></textarea>
                 <div class="input-actions">
                     <button id="voiceButton" class="voice-button" title="Toggle voice input">
                         <i class="voice-icon">🎤</i>
@@ -53,12 +51,6 @@
                 </div>
             </div>
         </footer>
-        <div class="reaction-menu" id="reactionMenu">
-            <button class="reaction-btn" data-reaction="superposition">⚛</button>
-            <button class="reaction-btn" data-reaction="entangled">🔗</button>
-            <button class="reaction-btn" data-reaction="collapsed">📊</button>
-            <button class="reaction-btn" data-reaction="wave">🌊</button>
-        </div>
     </div>
     <canvas id="quantumCanvas"></canvas>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
