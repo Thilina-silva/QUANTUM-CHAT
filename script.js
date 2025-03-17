@@ -43,8 +43,23 @@ let activeMessage = null;
 let isProcessingMessage = false; // Flag to prevent multiple message sends
 
 // API Configuration
-const COHERE_API_KEY = 'RvwURyicgwE1jCRvMc8qVLTdf0x0G2C3EO8v6H7I';
+let COHERE_API_KEY = ''; // Will be fetched from server
 const API_URL = 'https://api.cohere.ai/v1/generate';
+
+// Fetch API configuration from server
+async function fetchApiConfig() {
+    try {
+        const response = await fetch('/api/config');
+        const config = await response.json();
+        COHERE_API_KEY = config.cohereApiKey;
+        console.log('API configuration loaded');
+    } catch (error) {
+        console.error('Failed to load API configuration:', error);
+    }
+}
+
+// Initialize API configuration
+fetchApiConfig();
 
 // Chat History
 let chatHistory = [];

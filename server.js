@@ -17,6 +17,13 @@ app.use(express.static(__dirname, {
     }
 }));
 
+// API configuration endpoint
+app.get('/api/config', (req, res) => {
+    res.json({
+        cohereApiKey: process.env.COHERE_API_KEY || 'RvwURyicgwE1jCRvMc8qVLTdf0x0G2C3EO8v6H7I' // Fallback for local development
+    });
+});
+
 // Ping endpoint to keep the service active
 app.get('/ping', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
