@@ -39,9 +39,11 @@
                 </div>
             </div>
         </header>
-        <div class="chat-container">
+        <main class="chat-container">
             <div id="chatMessages" class="chat-messages"></div>
-            <div class="chat-input-container">
+        </main>
+        <footer class="chat-input-container">
+            <div class="input-wrapper">
                 <textarea id="userInput" placeholder="Type your message here..." rows="1"></textarea>
                 <div class="input-actions">
                     <button id="voiceButton" class="voice-button" title="Toggle voice input">
@@ -50,7 +52,7 @@
                     <button id="sendButton">Send</button>
                 </div>
             </div>
-        </div>
+        </footer>
         <div class="reaction-menu" id="reactionMenu">
             <button class="reaction-btn" data-reaction="superposition">⚛</button>
             <button class="reaction-btn" data-reaction="entangled">🔗</button>
