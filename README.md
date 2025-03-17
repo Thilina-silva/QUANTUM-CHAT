@@ -1,6 +1,6 @@
 # AI Chat Platform
 
-A simple, static website that allows users to interact with ChatGPT through a clean and intuitive interface.
+A simple, static website that allows users to interact with Cohere through a clean and intuitive interface.
 
 ## Features
 
@@ -13,9 +13,9 @@ A simple, static website that allows users to interact with ChatGPT through a cl
 ## Setup
 
 1. Clone this repository
-2. Create a `.env` file in the root directory and add your OpenAI API key:
+2. Create a `.env` file in the root directory and add your Cohere API key:
    ```
-   OPENAI_API_KEY=your_api_key_here
+   Cohere_API_KEY=your_api_key_here
    ```
 3. Open `index.html` in your browser
 
@@ -28,4 +28,4 @@ The API key is managed securely through environment variables and should never b
 - HTML5
 - CSS3
 - Vanilla JavaScript
-- OpenAI ChatGPT API 
+- Cohere API 

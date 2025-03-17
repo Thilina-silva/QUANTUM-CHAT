@@ -17,11 +17,25 @@ let chatHistory = [];
 let particles = [];
 let animationFrameId;
 
-// Theme handling
-const savedTheme = localStorage.getItem('quantumTheme') || 'entanglement';
-themeSelector.value = savedTheme;
-document.body.setAttribute('data-theme', savedTheme);
+// Defer non-critical initializations
+document.addEventListener('DOMContentLoaded', () => {
+    // Theme handling
+    const savedTheme = localStorage.getItem('quantumTheme') || 'entanglement';
+    themeSelector.value = savedTheme;
+    document.body.setAttribute('data-theme', savedTheme);
 
+    // Initialize particle system after a short delay
+    setTimeout(() => {
+        initParticles();
+        updateParticleEffect(savedTheme);
+        animate();
+    }, 100);
+
+    // Start ping service
+    startPingService();
+});
+
+// Event Listeners
 themeSelector.addEventListener('change', (e) => {
     const theme = e.target.value;
     document.body.setAttribute('data-theme', theme);
@@ -118,8 +132,6 @@ function resizeCanvas() {
 // Initialize particle system
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
-initParticles();
-animate();
 
 // Quantum Mode Toggle
 const quantumModeToggle = document.getElementById('quantumMode');
@@ -770,9 +782,4 @@ function startPingService() {
 
     // Set up interval for regular pings
     setInterval(ping, pingInterval);
-}
-
-// Start the ping service when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    startPingService();
-}); 
+} 
