@@ -4,9 +4,6 @@ const userInput = document.getElementById('userInput');
 const sendButton = document.getElementById('sendButton');
 const canvas = document.getElementById('quantumCanvas');
 const ctx = canvas.getContext('2d');
-const themeSelector = document.getElementById('quantumTheme');
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
 
 // API Configuration
 const COHERE_API_KEY = 'RvwURyicgwE1jCRvMc8qVLTdf0x0G2C3EO8v6H7I';
@@ -42,14 +39,6 @@ function initializeApp() {
     // Start ping service
     startPingService();
 }
-
-// Event Listeners
-themeSelector.addEventListener('change', (e) => {
-    const theme = e.target.value;
-    document.body.setAttribute('data-theme', theme);
-    localStorage.setItem('quantumTheme', theme);
-    updateParticleEffect(theme);
-});
 
 // Particle system
 class Particle {
@@ -87,12 +76,6 @@ function initParticles() {
             Math.random() * canvas.height
         ));
     }
-}
-
-function updateParticleEffect(theme) {
-    particles.forEach(particle => {
-        particle.color = theme;
-    });
 }
 
 function animate() {
@@ -379,7 +362,9 @@ async function getAIResponse(message) {
 }
 
 // Initialize chat with welcome message
-addMessageToChat('ai', 'Hello! I\'m your AI assistant. How can I help you today?');
+document.addEventListener('DOMContentLoaded', () => {
+    addMessageToChat('ai', 'Hello! I\'m your AI assistant. How can I help you today?');
+});
 
 // Ping mechanism to keep the service active
 function startPingService() {
