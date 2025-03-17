@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUANTUM CHAT - Enter the Quantum Realm</title>
+    <title>AMOS Knowledge Assistant</title>
+    <link rel="icon" type="image/x-icon" href="https://spectec.net/wp-content/uploads/2023/10/Spectec-Favicon.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHN0eWxlPkBrZXlmcmFtZXMgcHVsc2V7NTAle3RyYW5zZm9ybTpzY2FsZSgxLjEpO29wYWNpdHk6MC43fX0uYXtmaWxsOm5vbmU7c3Ryb2tlOiMwMGZmZmY7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7YW5pbWF0aW9uOnB1bHNlIDJzIGluZmluaXRlfS5ie2ZpbGw6bm9uZTtzdHJva2U6I2ZmMDBmZjtzdHJva2Utd2lkdGg6MjtzdHJva2UtbGluZWNhcDpyb3VuZDthbmltYXRpb246cHVsc2UgMnMgaW5maW5pdGUgMXN9PC9zdHlsZT48Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSIyNCIgY2xhc3M9ImEiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSIxNiIgY2xhc3M9ImIiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSI4IiBjbGFzcz0iYSIvPjwvc3ZnPg==">
@@ -16,11 +19,56 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="intro" class="intro-container">
-        <h1 class="intro-title">QUANTUM CHAT</h1>
-        <p class="intro-subtitle">Where quantum consciousness meets digital reality</p>
+    <div class="intro-container">
+        <img src="https://spectec.net/wp-content/uploads/2024/12/header-image-fan-1.webp" alt="SpecTec Logo" class="spectec-logo">
+        <h1 class="intro-title">AMOS Knowledge Assistant</h1>
+        <p class="intro-subtitle">Your Intelligent Guide to Maritime Asset Management</p>
     </div>
-    <div id="mainContent" class="container hidden">
+
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+        <span>Dark Mode</span>
+    </button>
+
+    <div class="container">
+        <header>
+            <img src="https://spectec.net/wp-content/uploads/2024/12/header-image-fan-1.webp" alt="SpecTec Logo" class="spectec-logo">
+            <h1>AMOS Knowledge Assistant</h1>
+            <p class="subtitle">Training & Support for AMOS Enterprise Solutions</p>
+            <nav class="topic-nav">
+                <button class="topic-btn active" data-topic="general">General Info</button>
+                <button class="topic-btn" data-topic="maintenance">Maintenance</button>
+                <button class="topic-btn" data-topic="procurement">Procurement</button>
+                <button class="topic-btn" data-topic="inventory">Inventory</button>
+                <button class="topic-btn" data-topic="qhse">QHSE</button>
+            </nav>
+        </header>
+
+        <div class="quick-help">
+            <h2>Popular Topics</h2>
+            <div class="help-grid">
+                <div class="help-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Getting Started</h3>
+                    <p>New to AMOS? Start here for basic navigation and setup.</p>
+                </div>
+                <div class="help-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Maintenance Module</h3>
+                    <p>Learn about work orders, maintenance schedules, and asset management.</p>
+                </div>
+                <div class="help-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Procurement</h3>
+                    <p>Understand purchasing workflows and supplier management.</p>
+                </div>
+                <div class="help-card">
+                    <i class="fas fa-boxes"></i>
+                    <h3>Inventory Control</h3>
+                    <p>Master stock management and warehouse operations.</p>
+                </div>
+            </div>
+        </div>
         <main class="chat-container">
             <div id="chatMessages" class="chat-messages"></div>
         </main>
@@ -40,5 +88,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     <script src="script.js" defer></script>
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        const themeIcon = themeToggle.querySelector('i');
+        const themeText = themeToggle.querySelector('span');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        updateThemeToggle(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeToggle(newTheme);
+        });
+
+        function updateThemeToggle(theme) {
+            if (theme === 'dark') {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                themeText.textContent = 'Light Mode';
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                themeText.textContent = 'Dark Mode';
+            }
+        }
+    </script>
 </body>
 </html> 
